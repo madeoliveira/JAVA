@@ -10,6 +10,7 @@ public class Order {
 		this.date = date;
 		this.product = product;
 	}
+	
 	public Date getDate() {
 		return date;
 	}
