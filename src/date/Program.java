@@ -3,6 +3,7 @@ package date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -18,11 +19,32 @@ public class Program {
 		Date y1 = sdf1.parse("27/07/2020");
 		Date y2 = sdf2.parse("27/07/2020 15:42:07");
 		Date y3 = Date.from(Instant.parse("2020-07-27T15:42:07Z"));
+		Date y4 = Date.from(Instant.parse("2020-07-27T15:42:07Z"));
 		
 		Date x1 =  new Date();
 		Date x2 =  new Date(System.currentTimeMillis());
 		Date x3 = new Date(0L);
 		Date x4 = new Date(1000L*60L*60L*5L);
+		
+		
+		System.out.println(sdf2.format(y4));
+		
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(y4);
+		cal.add(Calendar.HOUR_OF_DAY, 4);
+		y4=cal.getTime();
+		
+		System.out.println(sdf2.format(y4));
+		
+
+		int minutes = cal.get(Calendar.MINUTE);
+		int month = 1+cal.get(Calendar.MONTH);
+		
+		
+		System.out.println("Minutes: "+ minutes);
+		System.out.println("Minutes: "+ month);
+		
 		
 		
 		
