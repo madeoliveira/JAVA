@@ -17,6 +17,8 @@ public class Program {
 		Account acc1 = bacc;
 		Account acc2 = new BusinessAccount(1003, "Bob", 1000.0, 500.0);
 		Account acc3 = new SavingsAccount(1004, "Anna", 1000.0, 0.01);
+		Account acc6 = new SavingsAccount(1006, "Marcio", 1000.0,0.01);
+		Account acc7 = new Account(1007, "Sirlei",1000.0);
 		
 		
 		// DOWNCASTING
@@ -41,8 +43,14 @@ public class Program {
 		acc2.withdraw(200.0);
 		acc3.withdraw(200.0);
 		
+		acc6.withdraw(50.0);
+		acc7.withdraw(50.0);
+		
+		
 		System.out.println(acc.getBalance());
 		System.out.println(acc3.getBalance());
 		System.out.println(acc2.getBalance());
+		System.out.println(acc6.getBalance());
+		System.out.println(acc7.getBalance());
 	}
 }
