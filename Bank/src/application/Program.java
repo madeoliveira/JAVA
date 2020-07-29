@@ -1,5 +1,9 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 import entities.Account;
 import entities.BusinessAccount;
 import entities.SavingsAccount;
@@ -7,6 +11,8 @@ import entities.SavingsAccount;
 public class Program {
 
 	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
 
 		Account acc = new Account(1001, "Alex", 1000.0);
 		BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.0);
@@ -52,5 +58,27 @@ public class Program {
 		System.out.println(acc2.getBalance());
 		System.out.println(acc6.getBalance());
 		System.out.println(acc7.getBalance());
+		
+		// =====================Example to List ======================//
+		
+		List<Account>list= new ArrayList<>();
+		
+		list.add(new SavingsAccount(1007,"Rafael", 500.0, 0.01));
+		list.add(new BusinessAccount(1008,"Marcio", 1000.0, 400.0));
+		list.add(new SavingsAccount(1009,"Sirlei",300.0,0.01));
+		list.add(new BusinessAccount(1010, "Marcos",500.0, 500.0));
+		
+		double sum =0.0;
+		for (Account ac: list) {
+			sum+=ac.getBalance();		
+			}
+		System.out.printf("Total balance: %.2f%n", sum);
+		
+		for (Account ac : list) {
+			ac.deposit(10.0);
+		}
+		for (Account ac : list) {
+			System.out.printf("Updatedbalance for account %d: %.2f%n",ac.getNumber(),ac.getBalance());
+		}
 	}
 }
