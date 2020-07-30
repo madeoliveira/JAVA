@@ -11,7 +11,6 @@ public class Program {
 			sc = new Scanner(file);
 			while (sc.hasNextLine()) {
 				System.out.println(sc.nextLine());
-				
 			}
 		}
 		catch (IOException e) {
@@ -22,7 +21,6 @@ public class Program {
 				sc.close();
 			}
 		}
-
 	}
 
 }
