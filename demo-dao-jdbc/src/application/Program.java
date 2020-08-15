@@ -29,6 +29,11 @@ public class Program {
 			System.out.println(d);
 		}
 		
+		System.out.println("\n==== TEST 3: department insert =====");
+		Department newDepartment = new Department(null, "Music");
+		departmentDao.insert(newDepartment);
+		System.out.println("Inserted! New id: " + newDepartment.getId());
+		
 		
 		System.out.println(" \n==== Test 1: seller findById =====");
 		Seller seller = sellerDao.findById(3);
