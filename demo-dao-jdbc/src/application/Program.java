@@ -35,6 +35,12 @@ public class Program {
 		System.out.println("Inserted! New id: " + newDepartment.getId());
 		
 		
+		System.out.println("\n=== TEST 4: department update =======");
+		Department dep2 = departmentDao.findById(1);
+		dep2.setName("Food");
+		departmentDao.update(dep2);
+		System.out.println("Update completed");
+		
 		System.out.println(" \n==== Test 1: seller findById =====");
 		Seller seller = sellerDao.findById(3);
 		System.out.println(seller);
