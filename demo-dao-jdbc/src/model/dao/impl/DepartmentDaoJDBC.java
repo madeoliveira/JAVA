@@ -29,23 +29,25 @@ private Connection conn;
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(
-					"INSERT INTO departmeent "
-					+"(Name)"
-					+"VALUES "
-					+"(?)"
-					, Statement.RETURN_GENERATED_KEYS);
-			st.setNString(1, obj.getName());
-			
-			int rowsAffected = st.executeUpdate();
-			
-			if (rowsAffected>0) {
-				ResultSet rs = st.getGeneratedKeys();
-				if(rs.next()) {
-					int id = rs.getInt(1);
-					obj.setId(id);
+					"INSERT INTO department " +
+					"(Name) " +
+					"VALUES " +
+					"(?)", 
+					Statement.RETURN_GENERATED_KEYS);
+
+				st.setString(1, obj.getName());
+
+				int rowsAffected = st.executeUpdate();
+
+				if (rowsAffected > 0) {
+					ResultSet rs = st.getGeneratedKeys();
+					if (rs.next()) {
+						int id = rs.getInt(1);
+						obj.setId(id);
+					}
 				}
-			}
-			else {
+			else 
+			{
 				throw new DbException("Unexpected error! No rows affected!");
 			}
 		}
@@ -62,25 +64,22 @@ private Connection conn;
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(
-					"UPDATE department "
-					+"SET Namr = ? "
-					+"WHERE Id = ?"
-					);
-			
-			st.setString(1,obj.getName());
-			st.setInt(2, obj.getId());
-			
-			st.executeUpdate();			
+					"UPDATE department " +
+					"SET Name = ? " +
+					"WHERE Id = ?");
+
+				st.setString(1, obj.getName());
+				st.setInt(2, obj.getId());
+
+				st.executeUpdate();
 			}
-		catch (SQLException e) {
-			throw new DbException(e.getMessage());
+			catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			} 
+			finally {
+				DB.closeStatement(st);
+			}
 		}
-		finally {
-			DB.closeStatement(st);
-			
-		}
-		
-	}
 
 	@Override
 	public void deleteById(Integer id) {
