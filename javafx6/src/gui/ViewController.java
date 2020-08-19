@@ -20,6 +20,12 @@ public class ViewController implements Initializable {
 	private ComboBox<Person> comboBoxPerson;
 
 	private ObservableList<Person> obsList;
+	
+	@FXML
+	public void onComboBoxPersonAction() {
+		Person person = comboBoxPerson.getSelectionModel().getSelectedItem();
+		System.out.println(person);
+	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
